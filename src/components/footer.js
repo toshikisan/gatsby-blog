@@ -1,22 +1,17 @@
 import React from "react"
-import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import styled from "styled-components"
-import { rgba } from "polished"
+import { useSiteMetadata } from "./queries"
 
-const Footer = ({ siteTitle }) => (
-  <Wrapper>
-    &copy; {new Date().getFullYear()}, 
-    <Link to="/">{siteTitle}</Link>
-  </Wrapper>
-)
+const Footer = () => {
+  const { title } = useSiteMetadata()
 
-Footer.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Footer.defaultProps = {
-  siteTitle: ``,
+  return (
+    <Wrapper>
+      &copy; {new Date().getFullYear()}, 
+      <Link to="/">{title}</Link>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.footer`
@@ -26,6 +21,9 @@ const Wrapper = styled.footer`
   text-align: center;
   a {
     color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    &:link, &:visited, &:hover, &:active {
+      color: rgba(255, 255, 255, 0.85);
   }
 `
 

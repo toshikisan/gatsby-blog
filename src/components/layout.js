@@ -1,28 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
 import styled from "styled-components"
-import { rgba } from "polished"
 import "normalize.css"
-import Header from "./header"
 import Footer from "./footer"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <Wrapper>
-      <Header siteTitle={data.site.siteMetadata.title} />
       <main>{children}</main>
-      <Footer siteTitle={data.site.siteMetadata.title} />
+      <Footer />
     </Wrapper>
   )
 }
@@ -34,13 +20,15 @@ Layout.propTypes = {
 const Wrapper = styled.div`
   font-family: "M PLUS 1p", sans-serif;
   color: rgba(0, 0, 0, 0.85);
+  line-height: 2.4rem;
+  letter-spacing: 0.08rem;
   a {
-    text-decoration: none;
+    color: rgba(0, 0, 0, 0.85);
   }
   main {
     margin: 0 auto;
     max-width: 720px;
-    padding: 3rem;
+    padding: 0 3rem 3rem 3rem;
   }
 `
 

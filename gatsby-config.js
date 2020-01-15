@@ -7,11 +7,12 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `posts`,
+        path: `${__dirname}/contents/posts`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -32,7 +33,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['M PLUS 1p:300']
+          families: ['M PLUS 1p:300', 'Noto Serif JP:200']
         }
       }
     }
