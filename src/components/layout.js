@@ -18,7 +18,7 @@ Layout.propTypes = {
 }
 
 const Wrapper = styled.div`
-  font-family: "M PLUS 1p", sans-serif;
+  font-family: "Noto Serif JP", "M PLUS 1p", sans-serif;
   color: rgba(0, 0, 0, 0.85);
   line-height: 2.4rem;
   letter-spacing: 0.08rem;
