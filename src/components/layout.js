@@ -3,11 +3,17 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import "normalize.css"
 import Footer from "./footer"
+import Tags from "./tags"
+import Categories from "./categories"
 
 const Layout = ({ children }) => {
   return (
     <Wrapper>
-      <main>{children}</main>
+      <Categories />
+      <main>
+        {children}
+        <Tags />
+      </main>
       <Footer />
     </Wrapper>
   )
@@ -28,7 +34,7 @@ const Wrapper = styled.div`
   main {
     margin: 0 auto;
     max-width: 720px;
-    padding: 0 3rem 3rem 3rem;
+    padding: 0 3rem 6rem 3rem;
   }
 `
 

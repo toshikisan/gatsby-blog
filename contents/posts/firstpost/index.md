@@ -1,7 +1,8 @@
 ---
+type: 'post'
 title: 'My First Post'
-path: '/note/firstpost'
-category: ['note', 'ノート']
+slug: 'firstpost'
+category: 'column'
 tags: ['gatsby', 'qiita']
 date: '2019-08-18'
 status: 'published'

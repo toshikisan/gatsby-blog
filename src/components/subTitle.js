@@ -22,7 +22,7 @@ SubTitle.defaultProps = {
 const Wrapper = styled.div`
   h2 {
     font-size: 1rem;
-    margin: 3rem 0rem;
+    margin: 6rem 0 3rem 0;
     text-align: center;
     font-weight: normal;
   }

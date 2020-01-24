@@ -1,7 +1,8 @@
 ---
+type: 'post'
 title: 'My Second Post'
-path: '/note/secondpost'
-category: ['note', 'ノート']
+slug: 'secondpost'
+category: 'management'
 tags: ['gatsby', 'qiita']
 date: '2019-08-18'
 status: 'published'

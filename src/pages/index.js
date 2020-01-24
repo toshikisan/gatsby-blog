@@ -7,9 +7,12 @@ import Layout from "../components/layout"
 import Hero from "../components/hero"
 import SEO from "../components/seo"
 import SubTitle from "../components/subTitle"
+import { useCategories } from "../components/query/categories"
 
 const IndexPage = ({ data }) => {
   const { edges } = data.allMarkdownRemark
+  const categories = useCategories()
+
   return (
     <Layout>
       <SEO title="Home" />
@@ -18,8 +21,8 @@ const IndexPage = ({ data }) => {
       {edges.map(({ node }) => (
         <Item key={node.id}>
           <h3>
-            [<Link to={`/${node.frontmatter.category[0]}`}>{node.frontmatter.category[1]}</Link>]&nbsp;
-            <Link to={node.frontmatter.path}>
+            [<Link to={`/${node.frontmatter.category}`}>{categories[node.frontmatter.category]}</Link>]&nbsp;
+            <Link to={`/${node.frontmatter.category}/${node.frontmatter.slug}`}>
               {node.frontmatter.title}
             </Link>
           </h3>
@@ -36,7 +39,6 @@ const IndexPage = ({ data }) => {
           </div>
         </Item>
       ))}
-      <SubTitle title="タグ" />
     </Layout>
   )
 }
@@ -65,7 +67,7 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "YYYY/MM/DD")
-            path
+            slug
             category
             tags
           }

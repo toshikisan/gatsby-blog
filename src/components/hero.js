@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { useSiteMetadata } from "./queries"
+import { useSiteMetadata } from "./query/site"
 
 function Hero() {
   const { title, subtitle } = useSiteMetadata()

@@ -16,7 +16,7 @@ exports.createPages = (({graphql, actions}) => {
               edges {
                 node {
                   frontmatter {
-                    path
+                    slug
                     title
                     category
                     tags
@@ -35,43 +35,38 @@ exports.createPages = (({graphql, actions}) => {
         const posts = result.data.allMarkdownRemark.edges;
 
         posts.forEach(({node}) => {
-          const path = node.frontmatter.path
+          const path = '/' + node.frontmatter.category + '/' + node.frontmatter.slug
 
           createPage({
             path,
             component: postTemplate,
             context: {
-              pathSlug: path
+              slug: node.frontmatter.slug
             }
           })
         })
 
         // createPage categoryTemplate
         const postsByCategory = {};
-        const categories = {};
         posts.forEach(({ node }) => {
           if (node.frontmatter.category) {
-            const categoryName = node.frontmatter.category[1]
-            const categorySlug = node.frontmatter.category[0]
-            if (!postsByCategory[categorySlug]) {
-              postsByCategory[categorySlug] = [];
-              categories[categorySlug] = categoryName;
+            const category = node.frontmatter.category
+            if (!postsByCategory[category]) {
+              postsByCategory[category] = [];
             }
-            postsByCategory[categorySlug].push(node);
+            postsByCategory[category].push(node);
           }
         });
 
-        const categorySlugs = Object.keys(postsByCategory);
-        categorySlugs.forEach(categorySlug => {
-          const categoryName = categories[categorySlug];
-          const posts = postsByCategory[categorySlug];
+        const categories = Object.keys(postsByCategory);
+        categories.forEach(category => {
+          const posts = postsByCategory[category];
           createPage({
-            path: `/${categorySlug}`,
+            path: `/${category}`,
             component: categoryTemplate,
             context: {
               posts,
-              categorySlug,
-              categoryName
+              category
             }
           })
         });

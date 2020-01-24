@@ -18,7 +18,7 @@ const Post = ({ data }) => {
       <Title title={title} />
       <p>{date}</p>
       <div>
-        <Link to={`/${category[0]}`}>{category[1]}</Link>
+        <Link to={`/${category}`}>{category}</Link>
       </div>
       <div>
         {tags.map(tag =>
@@ -32,8 +32,8 @@ const Post = ({ data }) => {
   )
 }
 export const query = graphql`
-  query($pathSlug: String!) {
-    markdownRemark(frontmatter: { path: {eq: $pathSlug} }) {
+  query($slug: String!) {
+    markdownRemark(frontmatter: { slug: {eq: $slug} }) {
       html
       frontmatter {
         date

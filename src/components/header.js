@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
-import { useSiteMetadata } from "./queries"
+import { useSiteMetadata } from "./query/site"
 
 const Header = () => {
   const { title } = useSiteMetadata()
